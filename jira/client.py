@@ -2182,7 +2182,7 @@ class JIRA(object):
                 If maxResults evaluates as False, it will try to get all users in batches.
         """
         params = {
-            'username': username,
+            'query': username,  # Changed from username to query due to Jira Cloud GDPR change
             'projectKeys': projectKeys}
         return self._fetch_pages(User, None, 'user/assignable/multiProjectSearch', startAt, maxResults, params)
 
@@ -2204,7 +2204,7 @@ class JIRA(object):
                 If maxResults evaluates as False, it will try to get all items in batches.
         """
         params = {
-            'username': username}
+            'query': username}  # Changed from username to query due to Jira Cloud GDPR change
         if project is not None:
             params['project'] = project
         if issueKey is not None:
@@ -2324,7 +2324,7 @@ class JIRA(object):
         :param includeInactive: If true, then inactive users are included in the results.
         """
         params = {
-            'username': user,
+            'query': user,  # Changed from username to query due to Jira Cloud GDPR change
             'includeActive': includeActive,
             'includeInactive': includeInactive}
         return self._fetch_pages(User, None, 'user/search', startAt, maxResults, params)
@@ -2340,7 +2340,7 @@ class JIRA(object):
                 If maxResults evaluates as False, it will try to get all items in batches.
         """
         params = {
-            'username': user}
+            'query': user}  # Changed from username to query due to Jira Cloud GDPR change
         if issueKey is not None:
             params['issueKey'] = issueKey
         if projectKey is not None:
